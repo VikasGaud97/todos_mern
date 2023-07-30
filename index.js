@@ -11,11 +11,20 @@ const app = express();
 
 const PORT = 8000;
 
-app.use(cors());
+app.use(cors(
+   {
+        origin:["https://todos-api-ashy.vercel.app"],
+        methods:["POST","GET"],
+        credentials:true
+    }
+));
 
 app.use(bodyParser.json({extended:true})); // BODY-PARSER IS USED TO MANAGE THE DATA
 app.use(bodyParser.urlencoded({extended:true}));
 app.use('/',Routes)// path of route
+app.get("/",(req,res)=>{
+    res.json("hello its working")
+})
 
 
 app.listen(PORT,()=> console.log("your server is running" + PORT))

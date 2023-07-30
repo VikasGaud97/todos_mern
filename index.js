@@ -2,14 +2,14 @@
 import express from 'express';
 import DataConnection from './database/data.js';
 import cors from "cors" // cors is used when fontend and backend server is not  same
-import Routes from "../server/route/route.js"
+import Routes from "./route/route.js"
 import bodyParser from "body-parser"
 
 const app = express();
 
 
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8000;  
 
 app.use(cors());
 

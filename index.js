@@ -4,7 +4,9 @@ import DataConnection from './database/data.js';
 import cors from "cors" // cors is used when fontend and backend server is not  same
 import Routes from "./route/route.js"
 import bodyParser from "body-parser"
+import path from "path"
 
+const __dirname = path.resolve();
 const app = express();
 
 
@@ -16,8 +18,15 @@ app.use(cors());
 app.use(bodyParser.json({extended:true})); // BODY-PARSER IS USED TO MANAGE THE DATA
 app.use(bodyParser.urlencoded({extended:true}));
 app.use('/',Routes)// path of route
-app.get("/",(req,res)=>{
-    res.json("hello its working")
+// app.get("/",(req,res)=>{
+//     res.json("hello its working")
+// })
+app.use(express.static(path.join(__dirname,"./todo/build")))
+
+app.get('*',function(__,res){
+    res.sendFile(path.join(__dirname,"./todo/build/static/index.html"),function(err){
+        res.status(500).send(err)
+    })
 })
 
 

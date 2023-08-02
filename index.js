@@ -23,9 +23,10 @@ app.use('/',Routes)// path of route
 // })
 app.use(express.static(path.join(__dirname,"./todo/build")))
 
-app.get('*',function(__,res){
-    res.sendFile(path.join(__dirname,"./todo/build/static/index.html"),function(err){
+app.get('/',function(__,res){
+    res.sendFile(path.join(__dirname,"./todo/build",'index.html'),function(err){
         res.status(500).send(err)
+        res.status(200).send(console.log("ui is rendering"))
     })
 })
 

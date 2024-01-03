@@ -1,5 +1,6 @@
 import express, { request, response } from "express";
-import { addTodo ,getAllTodos ,toggleTodoDone,updateTodo,deleteTodo ,toggleTodoDelete} from "../Controller/todo-Controller.js";
+import { addTodo ,getAllTodos ,toggleTodoDone,updateTodo,deleteTodo ,toggleTodoDelete} from "../Controller Modules/todo-Controller.js";
+
 
 const  route = express.Router(); // to post request on the back end from frontend when its type dtat in form it hits this url /todos in the end
 route.post('/todos',addTodo)// request from the frontend

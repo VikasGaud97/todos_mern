@@ -6,13 +6,16 @@ export const addTodo = async (request, response) => {
         const newTodo = await Todo.create({
             data: request.body.data,
             createdAt: Date.now()
+            
         })
-
-        await newTodo.save();
-
+        
+        console.log("text  created  on  database")
+         
+        
         return response.status(200).json(newTodo);
     } catch (error) {
         return response.status(500).json(error.message);
+        
     }
 }
 
@@ -27,6 +30,7 @@ export const getAllTodos = async (request, response) => {
     }
 }
 
+// toggle todo Done
 export const toggleTodoDone = async (request, response) => {
     try {
         const todoRef = await Todo.findById(request.params.id);
@@ -44,7 +48,7 @@ export const toggleTodoDone = async (request, response) => {
     }
 }
 
-// toggle todo Delete
+// toggle todo mark  Delete icon
 export const toggleTodoDelete = async (request, response) => {
     try {
         const todoRef = await Todo.findById(request.params.id);
@@ -71,7 +75,7 @@ const todo =  await Todo.findById(request.params.id)
  console.log("text updated sucessful")
  return response.status(200).json(todo);
 }catch (error) {
-    console.log("canot connect to the server")
+    console.log("text  not updated sucessful")
   return response.status(500).json();
 }
 }

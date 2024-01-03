@@ -1,7 +1,5 @@
-//Todo model
 import mongoose from "mongoose";
-// data query in mongoDB
-const TodoSchema = mongoose.Schema({
+const TodoSchema = new mongoose.Schema({
     data:{
         type:String,
         required:true
@@ -19,6 +17,5 @@ const TodoSchema = mongoose.Schema({
         default:Date.now
     }
 })
-
 const todo = mongoose.model('todo',TodoSchema);
 export default todo;
